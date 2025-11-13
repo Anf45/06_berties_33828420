@@ -47,18 +47,17 @@ router.get('/search', function(req, res, next) {
 });
 
 router.get('/search-result', function (req, res, next) {
-    let keyword = req.query.keyword;
-
-    let sqlquery = "SELECT * FROM books WHERE name = ?";
-
-    db.query(sqlquery, [keyword], (err, result) => {
-        if (err) {
-            next(err);
-        } else {
-            res.render("search-results.ejs", { results: result, searchTerm: keyword });
-        }
-    });
+  let keyword = req.query.keyword;
+  let sqlquery = "SELECT * FROM books WHERE name LIKE ?";
+  db.query(sqlquery, ['%' + keyword + '%'], (err, result) => {
+    if (err) {
+      next(err);
+    } else {
+      res.render('search-results.ejs', { results: result, searchTerm: keyword });
+    }
+  });
 });
+
 
 
 // Export the router object so index.js can access it
