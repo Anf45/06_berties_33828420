@@ -10,10 +10,27 @@ router.get('/list', function(req, res, next) {
         if (err) {
             next(err)
         }
-        res.send(result)
+        res.render("list.ejs", {availableBooks:result})
     });
 });
+//
+router.get('/addbook', function(req, res, next) {
+    res.render("addbook.ejs");
+});
+//
+router.post('/bookadded', function (req, res, next) {
 
+    let sqlquery = "INSERT INTO books (name, price) VALUES (?, ?)";
+    let newrecord = [req.body.name, req.body.price];
+
+    db.query(sqlquery, newrecord, (err, result) => {
+        if (err) next(err);
+        else res.send("This book is added to database, name: " 
+            + req.body.name + " price " + req.body.price);
+    });
+
+});
+//
 router.get('/search', function(req, res, next) {
     res.render("search.ejs")
 });
