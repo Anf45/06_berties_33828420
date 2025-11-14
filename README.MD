@@ -19,5 +19,5 @@ Deploy on VM
     cd ~/06_berties_33828420
     git pull
     forever start -a --uid "bertieApp" index.js
-    Link: home=http://www.doc.gold.ac.uk/usr/33828300/
+    Link: home=http://www.doc.gold.ac.uk/usr/205/
 
