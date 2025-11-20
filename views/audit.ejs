@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login Audit – <%= shopData.shopName %></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+
+  <body>
+    <h1>Login Audit</h1>
+
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Username</th>
+        <th>Status</th>
+        <th>Time</th>
+      </tr>
+
+      <% logs.forEach(function (log) { %>
+        <tr>
+          <td><%= log.username %></td>
+          <td><%= log.loginStatus %></td>
+          <td><%= log.loginTime %></td>
+        </tr>
+      <% }) %>
+    </table>
+
+    <p><a href="/">Back to home</a></p>
+  </body>
+</html>
