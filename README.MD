@@ -93,3 +93,36 @@ This prevents users injecting malicious scripts such as:
 I did NOT sanitise:
     - Passwords (they are hashed and never displayed)
     - Emails (only validated, sanitising could break valid formats)
+
+## API
+
+This application also provides a JSON API for accessing book data.
+
+### Base URL
+
+Locally:
+- `http://localhost:8000/api/books`
+
+On the VM:
+- `https://doc.gold.ac.uk/usr/205/api/books`
+
+
+#### GET /api/books
+
+Returns a JSON array of all books.
+
+Example response:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Brighton Rock",
+    "price": 20.25
+  },
+  {
+    "id": 2,
+    "name": "Brave New World",
+    "price": 25.00
+  }
+]
